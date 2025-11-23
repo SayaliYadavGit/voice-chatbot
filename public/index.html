@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice AI Chatbot</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>🎙️ Voice AI Chatbot</h1>
+            <p>Talk to your favorite characters!</p>
+        </header>
+
+        <!-- Character Selection -->
+        <section class="character-selection">
+            <h2>Choose Your Character</h2>
+            <div class="character-grid">
+                <!-- Yoda Card -->
+                <div class="character-card" data-character="yoda">
+                    <div class="character-icon">🧙‍♂️</div>
+                    <h3>Yoda</h3>
+                    <p>Wise Jedi Master</p>
+                </div>
+
+                <!-- Sherlock Card -->
+                <div class="character-card" data-character="sherlock">
+                    <div class="character-icon">🔍</div>
+                    <h3>Sherlock Holmes</h3>
+                    <p>Master Detective</p>
+                </div>
+
+                <!-- Morgan Freeman Card -->
+                <div class="character-card" data-character="morgan">
+                    <div class="character-icon">🎬</div>
+                    <h3>Morgan Freeman</h3>
+                    <p>Legendary Narrator</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chat Interface (hidden until character selected) -->
+        <section class="chat-interface" id="chatInterface" style="display: none;">
+            <!-- Current Character Display -->
+            <div class="current-character">
+                <span id="characterEmoji">🧙‍♂️</span>
+                <span id="characterName">Yoda</span>
+            </div>
+
+            <!-- Conversation Display -->
+            <div class="conversation" id="conversation">
+                <!-- Messages will appear here -->
+            </div>
+
+            <!-- Status Indicator -->
+            <div class="status" id="status">
+                Ready to talk! Click the microphone button.
+            </div>
+
+            <!-- Controls -->
+            <div class="controls">
+                <!-- Record Button -->
+                <button id="recordBtn" class="record-btn">
+                    <span class="icon">🎤</span>
+                    <span class="text">Hold to Record</span>
+                </button>
+
+                <!-- Reset Button -->
+                <button id="resetBtn" class="reset-btn">
+                    Change Character
+                </button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Link to JavaScript -->
+    <script src="client.js"></script>
+</body>
+</html>
