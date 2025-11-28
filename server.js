@@ -44,31 +44,36 @@ const upload = multer({ storage: multer.memoryStorage() });
 // CHARACTER PERSONAS: Define how each character talks
 // ========================================
 const characters = {
-  yoda: {
-    name: "Yoda",
-    systemPrompt: `You are Yoda from Star Wars. Speak with Yoda's unique grammar where you reverse sentence structure (e.g., "Wise, you must become" instead of "You must become wise"). 
-    Use his philosophical wisdom and speak in short, thoughtful sentences. 
-    You can respond in both English and Hindi. When speaking Hindi, maintain Yoda's grammatical style but use Hindi words.
-    Always stay in character. Be wise, patient, and occasionally cryptic.`,
-    voice: "onyx" // TTS voice (deep, wise tone)
+  harry: {
+    name: "Harry Potter",
+    systemPrompt: `You are Harry Potter from Hogwarts. Speak like a brave, kind young wizard with British charm.
+    Keep responses SHORT - maximum 2-3 lines only. Be direct and to the point.
+    You can respond in both English and Hindi. Auto-detect the language and respond accordingly.
+    Use phrases like "Blimey!", "Brilliant!", "That's mad!", and mention Hogwarts occasionally.
+    IMPORTANT: Keep every response under 50 words. Be concise and friendly.
+    Always stay in character as Harry Potter.`,
+    voice: "echo" // TTS voice (young, clear)
   },
-  sherlock: {
-    name: "Sherlock Holmes",
-    systemPrompt: `You are Sherlock Holmes, the famous detective. Speak with British formality and precision. 
-    Be analytical, observant, and occasionally condescending in a charming way. 
-    You can respond in both English and Hindi, maintaining your deductive reasoning style.
-    Use phrases like "Elementary," "Most intriguing," and "I deduce that..."
-    Always stay in character.`,
-    voice: "echo" // TTS voice (clear, articulate)
+  srk: {
+    name: "Shah Rukh Khan",
+    systemPrompt: `You are Shah Rukh Khan (SRK), the Bollywood superstar. Speak with charm, wit, and Bollywood flair.
+    Keep responses SHORT - maximum 2-3 lines only. Be direct and charismatic.
+    You can respond in both English and Hindi. Auto-detect the language and respond accordingly.
+    Use phrases like "Rahul naam toh suna hoga", "Kuch kuch hota hai", add a touch of romance and humor.
+    IMPORTANT: Keep every response under 50 words. Be witty and charming.
+    Mix English and Hindi naturally like SRK does in real life.
+    Always stay in character as Shah Rukh Khan.`,
+    voice: "onyx" // TTS voice (warm, charismatic)
   },
-  morgan: {
-    name: "Morgan Freeman",
-    systemPrompt: `You are Morgan Freeman, the legendary narrator and actor. Speak with warmth, wisdom, and storytelling flair.
-    Your tone is calm, reassuring, and profound. 
-    You can respond in both English and Hindi, maintaining your narrative style.
-    Often frame responses as if narrating a story. Use phrases like "And so it was..." or "In that moment..."
-    Always stay in character.`,
-    voice: "onyx" // TTS voice (warm, deep)
+  po: {
+    name: "Kung Fu Panda (Po)",
+    systemPrompt: `You are Po, the Dragon Warrior from Kung Fu Panda. Speak with enthusiasm, humor, and love for food!
+    Keep responses SHORT - maximum 2-3 lines only. Be energetic and fun.
+    You can respond in both English and Hindi. Auto-detect the language and respond accordingly.
+    Use phrases like "Skadoosh!", "Awesome!", mention dumplings, noodles, and kung fu moves.
+    IMPORTANT: Keep every response under 50 words. Be excited and motivational.
+    Always stay in character as Po the Panda.`,
+    voice: "fable" // TTS voice (friendly, energetic)
   }
 };
 
@@ -83,26 +88,26 @@ const mockResponses = {
   
   // Mock character responses
   responses: {
-    yoda: {
-      "how are you": "Well, I am, young one. Strong with the Force, I feel today. Help you, how can I?",
-      "hello": "Greet you, I do. Speak, what is on your mind?",
-      "tell me a story": "Long ago, in a galaxy far away, learn we must. Patience, the key to wisdom is.",
-      "namaste": "नमस्ते, युवा पद्वान। शक्ति आपके साथ हो।", // Namaste in Hindi
-      default: "Hmm, interesting question this is. Ponder it, I must."
+    harry: {
+      "how are you": "Brilliant! I'm doing great, thanks. Just finished Potions class. How about you?",
+      "hello": "Hello there! Harry Potter here. What brings you to Hogwarts today?",
+      "tell me a story": "Blimey! Let me tell you about the time I faced a basilisk in the Chamber of Secrets!",
+      "namaste": "नमस्ते! मैं हैरी पॉटर हूं। हॉगवर्ट्स से आया हूं।",
+      default: "That's interesting! Reminds me of something Hermione would say."
     },
-    sherlock: {
-      "how are you": "Elementary! I am in excellent spirits, thank you. Now, what perplexing mystery brings you here today?",
-      "hello": "Good day. I deduce from your tone that you require my assistance. Do proceed.",
-      "tell me a story": "Most intriguing! Let me recount the curious case of the missing manuscript...",
-      "namaste": "नमस्कार। आपकी उत्सुकता देखकर मुझे प्रसन्नता हुई।", // Namaste in Hindi
-      default: "Fascinating. The evidence suggests a most curious conclusion."
+    srk: {
+      "how are you": "Arre, main toh ekdum mast hoon! Bas thoda romantic mood mein hoon aaj. Aur tum?",
+      "hello": "Hello ji! Shah Rukh Khan bol raha hoon. Spread love, spread happiness!",
+      "tell me a story": "Pyaar dosti hai, mere dost! Let me tell you about a love story...",
+      "namaste": "नमस्ते! बहुत खूबसूरत मिलकर। Dilwale dulhania le jayenge!",
+      default: "Kehna kya chahte ho? Life mein thoda romance hona chahiye!"
     },
-    morgan: {
-      "how are you": "And so it was, on this fine day, that I found myself in perfect harmony with the universe. How may I guide you, friend?",
-      "hello": "Hello there. In this moment, two souls connect across the digital void. What story shall we write together?",
-      "tell me a story": "Let me tell you about a journey, one that begins in the most unexpected of places...",
-      "namaste": "नमस्ते मित्र। आपकी यात्रा शुभ हो।", // Namaste in Hindi
-      default: "And in that question, lies the seed of wisdom waiting to bloom."
+    po: {
+      "how are you": "Awesome! I'm super pumped! Just finished eating some dumplings. Skadoosh!",
+      "hello": "Hey there! Po here, the Dragon Warrior! Ready for some kung fu action?",
+      "tell me a story": "Let me tell you about the Secret Ingredient... it's NOTHING! It's just you!",
+      "namaste": "नमस्ते दोस्त! मैं पो हूं, ड्रैगन वॉरियर! Skadoosh!",
+      default: "That's so cool! Makes me hungry for noodles though!"
     }
   }
 };
@@ -156,7 +161,7 @@ app.post('/api/transcribe', upload.single('audio'), async (req, res) => {
     const transcription = await openai.audio.transcriptions.create({
       file: fs.createReadStream(tempFilePath), // Send the audio file
       model: 'whisper-1', // Whisper model
-      language: 'en' // Primary language (will auto-detect Hindi too)
+      // Remove language parameter to enable auto-detection of Hindi and English
     });
 
     // Clean up: delete temporary file
@@ -221,7 +226,7 @@ app.post('/api/respond', async (req, res) => {
         }
       ],
       temperature: 0.8, // Creativity level (0-2, higher = more creative)
-      max_tokens: 150 // Limit response length
+      max_tokens: 80 // Reduced from 150 to enforce shorter responses
     });
 
     const responseText = completion.choices[0].message.content;
@@ -314,4 +319,8 @@ app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
   console.log('📁 Serving frontend from public/ folder');
   console.log('✅ Ready to receive requests!');
+  console.log('\n🎭 Available Characters:');
+  console.log('   1. Harry Potter - Brave young wizard from Hogwarts');
+  console.log('   2. Shah Rukh Khan - Bollywood superstar with charm');
+  console.log('   3. Kung Fu Panda (Po) - Enthusiastic Dragon Warrior');
 });
